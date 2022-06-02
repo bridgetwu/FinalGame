@@ -7,7 +7,6 @@ public class Constants {
     }
 
     public static class Position {
-        public static int BRICK_AMT = 50;
         public static int BOTTOM_LINE = 900;
 
         public static int BAR_X = Dimension.BOARD_WIDTH / 2;
