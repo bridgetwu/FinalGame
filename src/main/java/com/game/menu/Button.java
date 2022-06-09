@@ -1,7 +1,6 @@
 package com.game.menu;
 
 import com.game.Main;
-import com.game.play.GamePanel;
 import com.game.utils.Constants;
 
 import javax.swing.*;
@@ -16,15 +15,7 @@ public class Button extends JButton {
 
         this.setBounds((Constants.Dimension.BOARD_WIDTH - Constants.Dimension.BTN_WIDTH) / 2,Constants.Dimension.BOARD_HEIGHT * 3 / 4, Constants.Dimension.BTN_WIDTH, Constants.Dimension.BTN_HEIGHT);
         this.addActionListener(e -> {
-            switchPanel();
+            Main.repaintGamePanel(Main.menuPanel, true);
         });
     }
-
-    public void switchPanel(){
-        Main.jframe.remove(Main.menuPanel);
-        Main.jframe.add(new GamePanel());
-        Main.jframe.validate();
-        Main.jframe.repaint();
-    }
-
 }

@@ -7,7 +7,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-public class GamePanel extends JPanel implements MouseMotionListener, ActionListener {
+
+public class GamePanel extends JPanel implements MouseMotionListener, KeyListener, ActionListener {
     private boolean gameOver = false;
 
     private int score = 0;
@@ -16,7 +17,6 @@ public class GamePanel extends JPanel implements MouseMotionListener, ActionList
     private int brickColumns = 10;
     private int totalBricks = brickColumns * brickRows;
 
-    private int player_x_move = 10;
 
     private Timer timer;
 
@@ -32,6 +32,7 @@ public class GamePanel extends JPanel implements MouseMotionListener, ActionList
     public GamePanel() {
         brick = new Brick(brickRows, brickColumns);
 
+        addKeyListener(this);
         addMouseMotionListener(this);
         setFocusable(true);
         setFocusTraversalKeysEnabled(false);
@@ -83,19 +84,6 @@ public class GamePanel extends JPanel implements MouseMotionListener, ActionList
     }
 
     public void keyPressed(KeyEvent e) {
-//        if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
-//            if (player_x >= Constants.Dimension.BOARD_WIDTH - 10) {
-//                player_x = Constants.Dimension.BOARD_WIDTH - 10;
-//            } else {
-//                moveRight();
-//            }
-//        } else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
-//            if (player_x < 10) {
-//                player_x = 10;
-//            } else {
-//                moveLeft();
-//            }
-//        }
         if (e.getKeyCode() == KeyEvent.VK_SPACE) {
             if (gameOver) {
                 gameOver = false;
@@ -112,17 +100,6 @@ public class GamePanel extends JPanel implements MouseMotionListener, ActionList
             }
         }
     }
-
-//    private void moveRight() {
-//        gameOver = false;
-//        player_x = mouse_x;
-//
-//    }
-//
-//    private void moveLeft() {
-//        gameOver = false;
-//        player_x -= player_x_move;
-//    }
 
     private void moveBall() {
         ball_x += ball_x_dir;

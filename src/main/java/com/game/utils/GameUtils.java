@@ -15,10 +15,4 @@ public class GameUtils {
         return Toolkit.getDefaultToolkit().getImage(GameUtils.class.getResource("/"+ imageName));
     }
 
-    public static void repaintGamePanel(JPanel jpanel) {
-        Main.jframe.remove(jpanel);
-        Main.jframe.add(new GamePanel());
-        Main.jframe.validate();
-        Main.jframe.repaint();
-    }
 }
