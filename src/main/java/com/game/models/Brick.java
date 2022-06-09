@@ -1,5 +1,6 @@
 package com.game.models;
 
+import com.game.utils.Constants;
 import com.game.utils.GameUtils;
 
 import javax.swing.*;
@@ -9,9 +10,9 @@ import java.util.List;
 import java.util.Random;
 
 public class Brick {
-    int [][] map;
-    int brickWidth;
-    int brickHeight;
+    public int [][] map;
+    public int brickWidth;
+    public int brickHeight;
 
     private Color[] color = {Color.GREEN, Color.CYAN, Color.YELLOW, Color.ORANGE, Color.PINK, Color.PINK, Color.CYAN, Color.YELLOW, Color.WHITE, Color.BLUE};
 
@@ -25,8 +26,8 @@ public class Brick {
             }
         }
 
-        brickWidth = 750/col;
-        brickHeight = 250/row;
+        brickWidth = Constants.Dimension.BOARD_WIDTH / (col + 2) ;
+        brickHeight = Constants.Dimension.BOARD_HEIGHT / 2 / (row);
     }
 
     public void draw(Graphics2D graphics2D) {
@@ -35,11 +36,11 @@ public class Brick {
             for (int j=0; j < map[0].length; j++) {
                 if (map[i][j] > 0) {
                     graphics2D.setColor(colorList.get(i+j));
-                    graphics2D.fillRect(j * brickWidth + 80, i * brickHeight + 50, brickWidth, brickHeight);
+                    graphics2D.fillRect(j * brickWidth + 100, i * brickHeight + 75, brickWidth, brickHeight);
 
-                    graphics2D.setStroke(new BasicStroke(3));
+                    graphics2D.setStroke(new BasicStroke(5));
                     graphics2D.setColor(Color.black);
-                    graphics2D.drawRect(j * brickWidth + 80, i * brickHeight + 50, brickWidth, brickHeight);
+                    graphics2D.drawRect(j * brickWidth + 100, i * brickHeight + 75, brickWidth, brickHeight);
                 }
             }
         }

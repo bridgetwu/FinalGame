@@ -1,31 +1,24 @@
 package com.game.menu;
 
-import com.game.play.GamePanel;
+import com.game.utils.Constants;
+import com.game.utils.GameUtils;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class MenuPanel extends JPanel{
-
+    Image background;
     public MenuPanel(){
-        JPanel menupanel = new JPanel();
+        background = GameUtils.getImage("space.gif").getScaledInstance(Constants.Dimension.BOARD_WIDTH, Constants.Dimension.BOARD_HEIGHT, Image.SCALE_DEFAULT);
 
-        menupanel.setVisible(true);
-        menupanel.setOpaque(false);
+        this.setLayout(null);
+        this.add(new Button());
+    }
 
-        JButton btn = new ImageBtn("start.png");
-        menupanel.add(btn, BorderLayout.SOUTH);
-        btn.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                new GamePanel();
-            }
-        });
-
-
-        menupanel.setBackground(Color.BLACK);
+    public void paintComponent(Graphics graphics) {
+        super.paintComponent(graphics);
+        Graphics2D graphics2D = (Graphics2D) graphics;
+        graphics2D.drawImage(background, 0, 0,this);
     }
 }
 
