@@ -4,9 +4,6 @@ public class Constants {
     public static class Dimension {
         public static int BOARD_WIDTH = 1000;
         public static int BOARD_HEIGHT = 750;
-
-        public static int BTN_WIDTH = 200;
-        public static int BTN_HEIGHT = 100;
     }
 
     public static class Position {

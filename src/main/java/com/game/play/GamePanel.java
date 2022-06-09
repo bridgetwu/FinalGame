@@ -8,7 +8,7 @@ import java.awt.*;
 import java.awt.event.*;
 
 
-public class GamePanel extends JPanel implements MouseMotionListener, KeyListener, ActionListener {
+public class GamePanel extends JPanel implements KeyListener, ActionListener {
     private boolean gameOver = false;
 
     private int score = 0;
@@ -27,13 +27,14 @@ public class GamePanel extends JPanel implements MouseMotionListener, KeyListene
     private int ball_x_dir = -1;
     private int ball_y_dir = -2;
 
+    private int player_x_move = 25;
+
     private Brick brick;
 
     public GamePanel() {
         brick = new Brick(brickRows, brickColumns);
 
         addKeyListener(this);
-        addMouseMotionListener(this);
         setFocusable(true);
         setFocusTraversalKeysEnabled(false);
         timer = new Timer(2, this);
@@ -84,6 +85,19 @@ public class GamePanel extends JPanel implements MouseMotionListener, KeyListene
     }
 
     public void keyPressed(KeyEvent e) {
+        if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
+            if (player_x >= Constants.Dimension.BOARD_WIDTH - 125) {
+                player_x = Constants.Dimension.BOARD_WIDTH - 125;
+            } else {
+                moveRight();
+            }
+        } else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
+            if (player_x < 10) {
+                player_x = 10;
+            } else {
+                moveLeft();
+            }
+        }
         if (e.getKeyCode() == KeyEvent.VK_SPACE) {
             if (gameOver) {
                 gameOver = false;
@@ -101,6 +115,17 @@ public class GamePanel extends JPanel implements MouseMotionListener, KeyListene
         }
     }
 
+    private void moveRight() {
+        gameOver = false;
+        player_x += player_x_move;
+
+    }
+
+    private void moveLeft() {
+        gameOver = false;
+        player_x -= player_x_move;
+    }
+
     private void moveBall() {
         ball_x += ball_x_dir;
         ball_y += ball_y_dir;
@@ -115,10 +140,10 @@ public class GamePanel extends JPanel implements MouseMotionListener, KeyListene
     }
 
     private void ballPaddleCollision() {
-        if ((new Rectangle(ball_x_dir, ball_y, 20, 20).intersects(new Rectangle(player_x, 550, 100, 8))) || new Rectangle(ball_x, ball_y, 20, 20).intersects(new Rectangle(player_x + 30, 550, 40, 8))) {
+        if ((new Rectangle(ball_x, ball_y, 20, 20).intersects(new Rectangle(player_x, Constants.Position.BAR_Y, 100, 8))) || new Rectangle(ball_x, ball_y, 20, 20).intersects(new Rectangle(player_x + 30, Constants.Position.BAR_Y, 40, 8))) {
             ball_y_dir = -ball_y_dir;
             speedUp();
-        } else if (new Rectangle(ball_x, ball_y, 20, 20).intersects(new Rectangle(player_x + 70, 550, 30, 8))) {
+        } else if (new Rectangle(ball_x, ball_y, 20, 20).intersects(new Rectangle(player_x + 70, Constants.Position.BAR_Y, 30, 8))) {
             ball_y_dir = -ball_y_dir;
             ball_x_dir += 1;
             speedUp();
@@ -186,16 +211,5 @@ public class GamePanel extends JPanel implements MouseMotionListener, KeyListene
     private void speedUp() {
         ball_x_dir *= 1.05;
         ball_y_dir *= 1.05;
-    }
-
-    @Override
-    public void mouseDragged(MouseEvent e) {
-
-    }
-
-    @Override
-    public void mouseMoved(MouseEvent e) {
-        PointerInfo pointerInfo = MouseInfo.getPointerInfo();
-        player_x = (int) pointerInfo.getLocation().getX();
     }
 }
