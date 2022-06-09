@@ -1,8 +1,4 @@
-package com.game.menu;
-
-import com.game.Main;
-import com.game.utils.Constants;
-import com.game.utils.GameUtils;
+package com.game;
 
 import javax.swing.*;
 import java.awt.*;
@@ -28,13 +24,17 @@ public class MenuPanel extends JPanel implements KeyListener {
         graphics.setFont(new Font("Courier", Font.BOLD, 75));
         graphics.drawString("Atari Breakout", Constants.Dimension.BOARD_WIDTH / 2 - 250,Constants.Dimension.BOARD_HEIGHT * 3 / 8);
 
+        graphics.setColor(Color.MAGENTA);
+        graphics.setFont(new Font("Courier", Font.PLAIN, 25));
+        graphics.drawString("(the budget version)", Constants.Dimension.BOARD_WIDTH / 2 - 100,Constants.Dimension.BOARD_HEIGHT * 7 / 16);
+
         graphics.setColor(Color.YELLOW);
         graphics.setFont(new Font("Courier", Font.PLAIN, 25));
         graphics.drawString("Press space bar to start", Constants.Dimension.BOARD_WIDTH / 2 - 125,Constants.Dimension.BOARD_HEIGHT * 3 / 4);
 
-        graphics.setColor(Color.MAGENTA);
-        graphics.setFont(new Font("Courier", Font.PLAIN, 25));
-        graphics.drawString("Developed by Bridget Wu, June 2022", Constants.Dimension.BOARD_WIDTH / 2 - 205,Constants.Dimension.BOARD_HEIGHT * 9 / 10);
+        graphics.setColor(Color.WHITE);
+        graphics.setFont(new Font("Courier", Font.PLAIN, 10));
+        graphics.drawString("Background from Gifer.com", Constants.Dimension.BOARD_WIDTH - 150,Constants.Dimension.BOARD_HEIGHT * 15 / 16);
     }
 
     @Override

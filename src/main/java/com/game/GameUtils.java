@@ -1,7 +1,4 @@
-package com.game.utils;
-
-import com.game.Main;
-import com.game.play.GamePanel;
+package com.game;
 
 import javax.swing.*;
 import java.awt.*;

@@ -1,4 +1,4 @@
-package com.game.utils;
+package com.game;
 
 public class Constants {
     public static class Dimension {

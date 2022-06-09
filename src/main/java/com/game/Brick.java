@@ -1,9 +1,5 @@
-package com.game.models;
+package com.game;
 
-import com.game.utils.Constants;
-import com.game.utils.GameUtils;
-
-import javax.swing.*;
 import java.awt.*;
 import java.util.LinkedList;
 import java.util.List;

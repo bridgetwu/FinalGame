@@ -1,7 +1,4 @@
-package com.game.play;
-
-import com.game.models.Brick;
-import com.game.utils.Constants;
+package com.game;
 
 import javax.swing.*;
 import java.awt.*;
@@ -130,7 +127,7 @@ public class GamePanel extends JPanel implements KeyListener, ActionListener {
         ball_x += ball_x_dir;
         ball_y += ball_y_dir;
 
-        if (ball_x < 0 || ball_x > Constants.Dimension.BOARD_WIDTH) {
+        if (ball_x < 0 || ball_x > Constants.Dimension.BOARD_WIDTH - 125) {
             ball_x_dir = -ball_x_dir;
         }
 

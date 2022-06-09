@@ -1,9 +1,5 @@
 package com.game;
 
-import com.game.menu.MenuPanel;
-import com.game.play.GamePanel;
-import com.game.utils.Constants;
-
 import javax.swing.*;
 
 public class Main {
